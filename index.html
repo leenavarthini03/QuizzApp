@@ -22,9 +22,20 @@
                         <strong>TURTLE QUIZ</strong>
                     </h3>
                 </div>
-                <div ng-controller="listCtrl">
+                <div ng-controller="listCtrl" ng-hide="quizMetrics.quizActive">
+                        <form class="form-inline well well-sm clearfix">
+                                <span class="glyphicon glyphicon-search"></span>
+                                <input 
+                                    type="text" 
+                                    placeholder="Search..." 
+                                    class="form-control" ng-model="search">
+                                    <button class="btn btn-warning pull-right" ng-click="activateQuiz()">
+                                    <strong>Start Quiz</strong>
+                                </button>      
+                            </form>
+            
                     <div class="row">
-                        <div class="col-sm-6" ng-repeat="turtle in data">
+                        <div class="col-sm-6" ng-repeat="turtle in data | filter:search">
                               <div class="well well-sm">
                                   <div class="row">
                                       <div class="col-md-6">
@@ -36,12 +47,50 @@
                                         <p><strong>Size: </strong>{{turtle.size}}</p>
                                         <p><strong>Average Lifespan: </strong>{{turtle.lifespan}}</p>
                                         <p><strong>Diet: </strong>{{turtle.diet}}</p>
-                                        <button class="btn btn-primary pull-right">Learn More</button>
+                                        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#turtle-info" ng-click="changeActiveTurtle(turtle);"
+                                        >Learn More</button>
                                       </div> 
                                   </div>
                               </div>
+                             
                         </div>
+                        <div class="modal" id="turtle-info">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h2>{{activeTurtle.type}}</h2>
+                                    </div>  
+                                    <div class="model-body">
+                                        <div class="row">
+                                            <div class="col-xs-8 col-xs-offset-2">
+                                                <img ng-src="{{activeTurtle.image_url}}" 
+                                                     class="img-rounded img-responsive">
+                                            </div>
+                                        </div>   
+                                        <div class="row top-buffer">
+                                            <div class="col-md-6">
+                                                <p><strong>Locations: </strong>{{activeTurtle.locations}}</p>
+                                                <p><strong>Size: </strong>{{activeTurtle.size}}</p>
+                                                <p><strong>Average Lifespan: </strong>{{activeTurtle.lifespan}}</p>
+                                                <p><strong>Diet: </strong>{{activeTurtle.diet}}</p>
+                                            </div>
+                                        <div class="col-xs-12">
+                                            <p>{{activeTurtle.description}}</p>
+                                            <button class="btn btn-danger pull-right" 
+                                                    data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                                 
+                                </div>
+                            </div>
+                        </div>
+                         
                     </div>
+                </div>
+                <div ng-controller="quizCtrl" ng-show="quizMetrics.quizAxtive">
+                      
+                          
                 </div>
         </div>
 
