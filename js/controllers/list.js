@@ -11,6 +11,7 @@
        $scope.changeActiveTurtle = (index)=>{
                 $scope.activeTurtle=index;
        }
+       console.log(quizMetrics.quizActive);
     }]);
     // listCtrl.$inject=[];
     // turtleFacts.controller('listCtrl', listCtrl);

@@ -5,3 +5,24 @@
 .top-buffer{
     margin: 30px 20px;
 }
+.answer{
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid #bbb;
+}
+.answer:hover{
+    cursor: pointer;
+}
+.image-answer{
+    cursor: pointer;
+    height: 200px;
+    width: 60%;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.image-answer img{
+    width: 100%;
+    height: auto;
+}
+ 
